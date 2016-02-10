@@ -26,8 +26,9 @@ time <command> - executes the command as normal, then prints out the time elapse
 
 ## MODIFIERS:
 __________
-
+```
 <non-built-in> & - executes a non-built-in in the background. 
 <non-built-in> < <file name> - redirects the input of an execution from stdin to a specified file name
 <non-built-in> > <file name> - redirects the output of an execution from stdout to a specified file name
 <non-built-in> | <non-built-in> - pipes the output of the first command to the input of the second command (THIS FEATURE IS BUGGY)
+```
