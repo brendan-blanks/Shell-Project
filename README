@@ -11,7 +11,7 @@ not able to determine why this is.
 
 COMMANDS:
 _________
-
+```
 exit - exits the shell (also accepts x)
 cd <path> - changes the working directory to the location specified.
 	Accepts absolute AND relative paths, as well as .. and ., but
@@ -33,10 +33,11 @@ time <command> - executes the command as normal, then prints out the
 	Furthermore, this shell is capable of opening itself, performing 
 	make on its own source code, and editting its own source code in 
 	nano/pico/vim/emacs.
+```
 
 MODIFIERS:
 __________
-
+```
 <non-built-in> & - executes a non-built-in in the background. 
 <non-built-in> < <file name> - redirects the input of an execution from 
 	stdin to a specified file name
@@ -44,3 +45,4 @@ __________
 	stdout to a specified file name
 <non-built-in> | <non-built-in> - pipes the output of the first command 
 	to the input of the second command (THIS FEATURE IS BUGGY)
+```
