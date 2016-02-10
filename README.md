@@ -1,15 +1,16 @@
-PROJECT 1: SHELL
+
+# PROJECT 1: SHELL
 ________________
 MADE BY: BRENDAN BLANKS
 CONTACT: bfb09c@fsu.edu / blanks@cs.fsu.edu / hamnat487@yahoo.com
 
-COMMENTS:
+## COMMENTS:
 _________
 
 When piping, the first command executes, but the second does not. I was 
 not able to determine why this is.
 
-COMMANDS:
+## COMMANDS:
 _________
 
 exit - exits the shell (also accepts x)
@@ -34,7 +35,7 @@ time <command> - executes the command as normal, then prints out the
 	make on its own source code, and editting its own source code in 
 	nano/pico/vim/emacs.
 
-MODIFIERS:
+## MODIFIERS:
 __________
 
 <non-built-in> & - executes a non-built-in in the background. 
