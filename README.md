@@ -14,26 +14,15 @@ not able to determine why this is.
 _________
 
 exit - exits the shell (also accepts x)
-cd <path> - changes the working directory to the location specified.
-	Accepts absolute AND relative paths, as well as .. and ., but
-	does not accept ~.
-echo <argument> | <$environment variable> - prints out argument or the 
-	value assigned to the environment variable specified
-viewproc <file name> - prints out contents of filename specified if the 
-	file can be found in /proc/
-time <command> - executes the command as normal, then prints out the
-	time elapsed in execution. Execution of time command does not 
-	depend on the contents of the command or any modifiers on the 
-	command, allowing for full versatility.
-<non-built-in> - executes the file name specified. Accepts absolute 
-	paths and relative paths if the path indicated is within the 
-	system path. Please do not execute in the form of ./<filename>, 
-	as the current working directory is considered part of the 
-	system path. ./<filename> is accepted, but it is unnecesary.
-	Also, emacs, vim, pico/nano, and man all work on this shell.
-	Furthermore, this shell is capable of opening itself, performing 
-	make on its own source code, and editting its own source code in 
-	nano/pico/vim/emacs.
+
+cd <path> - changes the working directory to the location specified.  Accepts absolute AND relative paths, as well as .. and ., but does not accept ~.
+
+echo <argument> | <$environment variable> - prints out argument or the value assigned to the environment variable specified
+
+viewproc <file name> - prints out contents of filename specified if the file can be found in /proc/
+time <command> - executes the command as normal, then prints out the time elapsed in execution. Execution of time command does not depend on the contents of the command or any modifiers on the command, allowing for full versatility.
+
+<non-built-in> - executes the file name specified. Accepts absolute paths and relative paths if the path indicated is within the system path. Please do not execute in the form of ./<filename>, as the current working directory is considered part of the system path. ./<filename> is accepted, but it is unnecesary. Also, emacs, vim, pico/nano, and man all work on this shell. Furthermore, this shell is capable of opening itself, performing make on its own source code, and editting its own source code in nano/pico/vim/emacs.
 
 ## MODIFIERS:
 __________
