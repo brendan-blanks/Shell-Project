@@ -28,7 +28,13 @@
 /* ==================================================================== */
 /* TYPE DEFINITIONS */
 
+struct{
+	int pipes[20][2];
+	int numPipes;
+	int wheresPipe[20];
+}plumbingStruct;
 
+typedef plumbingStruct plumbingType;
 
 /* TYPE DEFINITIONS */
 /* ==================================================================== */
@@ -38,7 +44,7 @@ const int MAX_INPUT_LENGTH=80;
 const int FALSE=0;
 const int TRUE=1;
 const int REVERSETRUE=2;
-const int MAXPIPES = 2;
+const int MAXPIPES = 20;
 const char NULLCHAR='\0';
 
 /* CONSTANTS */
@@ -390,14 +396,19 @@ void Execute(char* command, char** arguments)
 			char* theArguments[42];
 			theArguments[0] = strdup(tempPath);
 			int i;
-			int thePipe[2],
-			    thePipe2[2];
+/*			int thePipe[2],
+			    thePipe2[2]; */
+			plumbingType plumbing;
 			int backgroundMe = FALSE;
 			int redirectMe = FALSE;
-			int numPipes = 0;
-			int wheresPipe[2];
+			int plumbing.numPipes = 0;
+/*			int wheresPipe[2];
 			wheresPipe[0] = -1;
-			wheresPipe[1] = -1;
+			wheresPipe[1] = -1; */
+			for(int j = 0; j < MAXPIPES; j++)
+			{
+				plumbing.wheresPipe[j] = -1;
+			}
 			for(i = 0; i < 40 && strcmp(arguments[i], "") != 0; i++)
 			{
 //				printf("Adding %s to arguments[%d] passed to %s.\n", arguments[i], i, tempPath);
@@ -454,11 +465,16 @@ void Execute(char* command, char** arguments)
 				}
 				else if(strcmp(theArguments[k], "|") == 0 && theArguments[k+1] != NULL && strcmp(theArguments[k+1], ">") && strcmp(theArguments[k+1], "<") && strcmp(theArguments[k+1], "|") )
 				{
-					numPipes = numPipes + 1;
-					if(wheresPipe[0] == -1)
+					plumbing.numPipes = plumbing.numPipes + 1;
+					/* if(wheresPipe[0] == -1)
 						wheresPipe[0] = k;
 					else if(wheresPipe[1] == -1)
-						wheresPipe[1] = k;
+						wheresPipe[1] = k; */
+					for(int j = 0; j < MAXPIPES && plumbing.wheresPipe[j] != k; j++)
+					{
+						if(plumbing.wheresPipe[j]== -1)
+							plumbing.wheresPipe[k]=k;
+					}
 				}
 			}
 			if(backgroundMe)
@@ -466,7 +482,7 @@ void Execute(char* command, char** arguments)
 				theArguments[i] = NULL;
 			}
 			int newFileDes;
-			if(numPipes == 0)
+			if(plumbing.numPipes == 0)
 			{
 				if((pid = fork()) == 0)
 				{
@@ -494,7 +510,7 @@ void Execute(char* command, char** arguments)
 						waitpid(-1, &status, 0);
 				}
 			}
-			else if(numPipes == 1)
+			else if(plumbing.numPipes > 0)
 			{
 				if(pipe(thePipe))
 				{
